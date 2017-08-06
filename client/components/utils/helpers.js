@@ -22,7 +22,7 @@ const helpers = {
         });
     },
             
-    // This function hits our own server to retrieve the record of query results
+    // This function hits our own server to retrieve the record of saved results
     getSaved() {
         return axios.get("/api");
     },
@@ -38,6 +38,7 @@ const helpers = {
         );
     },
 
+    // This function deletes the saved article from our database.
     deleteSaved(title, date, url) {
         return axios.post("/deleteArticle", 
             {

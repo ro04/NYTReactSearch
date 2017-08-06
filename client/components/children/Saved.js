@@ -8,28 +8,27 @@ export class Saved extends Component {
         super(props)
         this.state = {
             saved: []
-        }       
+        }
     }
 
-    componentDidMount(){
-    // Get the latest saved articles.
-        helpers.getSaved().then(function(response) {
-            //console.log(response);
-            if (response !== this.state.saved) {
-                //console.log("Saved Articles ", response.data);
-                this.setState({ saved: response.data });
-                //console.log("Saved Articles Array ", this.state.saved);
-            }
-        }.bind(this));
-    }
-
-    componentDidUpdate() {
-        //console.log("componentDidUpdate");
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.saved !== this.state.saved && this.state.saved.length !== 0) {
+            console.log('componentDidUpdate');
+        }
     }
 
     deleteArticle(title, date, url){
         helpers.deleteSaved(title, date, url).then(function(response) {
             //console.log("updated");
+            // Get the latest saved articles.
+            helpers.getSaved().then(function(response) {
+                //console.log(response);
+                if (response !== this.state.saved) {
+                    //console.log("Saved Articles ", response.data);
+                    this.setState({ saved: response.data });
+                    //console.log("Saved Articles Array ", this.state.saved);
+                }
+            }.bind(this));
         }.bind(this))
     }
 

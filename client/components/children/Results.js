@@ -4,9 +4,40 @@ import { Component } from 'react';
 import helpers from "../utils/helpers";
 
 export class Results extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            saved: []
+        }
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if (prevState.saved !== this.state.saved && this.state.saved.length !== 0) {
+            console.log('componentDidUpdate');
+            /*helpers.getSaved().then(function(response) {
+                //console.log(response);
+                if (response !== this.state.saved) {
+                    //console.log("Saved Articles ", response.data);
+                     this.setState({ saved: response.data });
+                    //console.log("Saved Articles Array ", this.state.saved);
+                }
+            }.bind(this));*/
+        }
+    }
+  
+    // ==== Post the Save Article to the db =====
     saveArticle(title, date, url) {
-        helpers.postSaved(title, date, url).then(function (data) {
+        helpers.postSaved(title, date, url).then(function (response) {
             //console.log(data);
+            // Get the latest saved articles.
+            helpers.getSaved().then(function(response) {
+                //console.log(response);
+                if (response !== this.state.saved) {
+                    //console.log("Saved Articles ", response.data);
+                     this.setState({ saved: response.data });
+                    //console.log("Saved Articles Array ", this.state.saved);
+                }
+            }.bind(this));
         }.bind(this));
     }
 

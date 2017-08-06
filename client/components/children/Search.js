@@ -44,7 +44,7 @@ export class Search extends Component {
         )
     }
   
-    // ====================================================
+    // ===============================================================================
     render() {
         return (
             <div className="col-sm-12">
@@ -94,7 +94,7 @@ export class Search extends Component {
                                 this.handleClick references the handleClick function defined above our render function
                                 */}
                             <button className="btn btn-default" id="run-search" type="submit" onClick={this.searchClick}><i className="fa fa-search"></i> Search</button>
-                            <button className="btn btn-default" id="clear-all" type="submit" onClick={this.clearClick}><i className="fa fa-trash"></i> Clear Results</button>
+                            <button className="btn btn-default" id="clear-all" type="submit" onClick={this.clearClick}><i className="fa fa-trash"></i> Clear</button>
                         </form>
                     </div>
                 </div>

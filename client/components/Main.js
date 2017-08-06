@@ -22,11 +22,12 @@ export class Main extends Component {
         }
 
         this.setTerm = this.setTerm.bind(this);
-        
+      
     }
 
     // ===== The moment the page renders get the Saved articles ======
     componentDidMount() {
+        console.log('componentDidMount');
         // Get the latest saved articles.
         helpers.getSaved().then(function(response) {
             //console.log(response);
@@ -41,7 +42,7 @@ export class Main extends Component {
     // ===== If the component changes (i.e. if a search is entered)... ===== 
     componentDidUpdate(prevProps, prevState) {
         if (prevState.search_term !== this.state.search_term) {
-            //console.log("UPDATED");
+            console.log('componentDidUpdate');
             // Run the query 
             helpers.runQuery(this.state.search_term, this.state.start_year, this.state.end_year).then(function(NYTdata) {
                 if(NYTdata !== this.state.results) {
@@ -58,6 +59,7 @@ export class Main extends Component {
         this.setState({start_year: startYear});
         this.setState({end_year: endYear});
     };
+
     //===============================================================
     render() {
         return (
