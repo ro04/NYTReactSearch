@@ -38,6 +38,6 @@ app.use(function(err, res, next){
     res.status(err.status || 500);
 });
 
-app.listen(PORT, function(){
+app.listen(process.env.PORT ||PORT, function(){
     console.log("running at localhost " + PORT);
 });
