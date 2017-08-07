@@ -24,12 +24,12 @@ const helpers = {
             
     // This function hits our own server to retrieve the record of saved results
     getSaved() {
-        return axios.get("/api");
+        return axios.get("/api/save");
     },
 
     // This function posts new searches to our database.
     postSaved(title, date, url) {
-        return axios.post("/api", 
+        return axios.post("/api/save", 
             { 
                 title: title,
                 date: date,
@@ -40,13 +40,12 @@ const helpers = {
 
     // This function deletes the saved article from our database.
     deleteSaved(title, date, url) {
-        return axios.post("/deleteArticle", 
+        return axios.post("/api/delete", 
             {
                 title: title, 
                 date: date, 
-                url: url
-            }
-        );
+                url: url      
+            });
     },
 };
 

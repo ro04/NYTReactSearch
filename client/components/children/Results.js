@@ -4,38 +4,26 @@ import { Component } from 'react';
 import helpers from "../utils/helpers";
 
 export class Results extends Component {
-    constructor(props) {
+        constructor(props) {
         super(props)
         this.state = {
-            saved: []
+             saved: []
         }
+        this.saveArticle = this.saveArticle.bind(this);
     }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.saved !== this.state.saved && this.state.saved.length !== 0) {
-            console.log('componentDidUpdate');
-            /*helpers.getSaved().then(function(response) {
-                //console.log(response);
-                if (response !== this.state.saved) {
-                    //console.log("Saved Articles ", response.data);
-                     this.setState({ saved: response.data });
-                    //console.log("Saved Articles Array ", this.state.saved);
-                }
-            }.bind(this));*/
-        }
-    }
-  
+ 
     // ==== Post the Save Article to the db =====
     saveArticle(title, date, url) {
         helpers.postSaved(title, date, url).then(function (response) {
-            //console.log(data);
+            //console.log(response);
             // Get the latest saved articles.
             helpers.getSaved().then(function(response) {
-                //console.log(response);
-                if (response !== this.state.saved) {
-                    //console.log("Saved Articles ", response.data);
+                console.log(response);
+                if (response !== this.setState.saved) {
+                    console.log("Saved Articles ", this.state.saved);
                      this.setState({ saved: response.data });
-                    //console.log("Saved Articles Array ", this.state.saved);
+                     this.props.setSavedArticles(this.state.saved);
+                    console.log("Saved Articles Array ", this.state.saved);
                 }
             }.bind(this));
         }.bind(this));

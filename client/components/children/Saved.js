@@ -9,12 +9,7 @@ export class Saved extends Component {
         this.state = {
             saved: []
         }
-    }
-
-    componentDidUpdate(prevProps, prevState) {
-        if (prevState.saved !== this.state.saved && this.state.saved.length !== 0) {
-            console.log('componentDidUpdate');
-        }
+        this.deleteArticle = this.deleteArticle.bind(this);
     }
 
     deleteArticle(title, date, url){
@@ -26,6 +21,7 @@ export class Saved extends Component {
                 if (response !== this.state.saved) {
                     //console.log("Saved Articles ", response.data);
                     this.setState({ saved: response.data });
+                    this.props.setSavedArticles(this.state.saved);
                     //console.log("Saved Articles Array ", this.state.saved);
                 }
             }.bind(this));

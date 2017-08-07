@@ -33,7 +33,7 @@ module.exports = function(app) {
     });
 
     // This is the route we will send GET requests to retrieve our most recent search data.
-    app.get("/api", function(req, res) {
+    app.get("/api/save", function(req, res) {
         // We will find all the records, sort it in descending order, then limit the records to 5
         Article.find({}).sort([
             ["date", "descending"]
@@ -48,7 +48,7 @@ module.exports = function(app) {
     });
 
     // This is the route we will send POST requests to save each search.
-    app.post("/api", function(req, res){
+    app.post("/api/save", function(req, res){
         Article.create({
             title: req.body.title,
             date: req.body.date,
