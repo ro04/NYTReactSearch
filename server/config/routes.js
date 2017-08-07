@@ -12,8 +12,8 @@ mongoose.Promise = Promise;
 var Article = require("../models/Article");
 
 // Database configuration with mongoose
-mongoose.connect("mongodb://localhost/nytreactsearch", {
-//mongoose.connect("mongodb://herokuhost/heroku_wqk18zj3:uu2pd2lveluo4gb3dbhqvnsqe1@ds161041.mlab.com:61041/heroku_wqk18zj3", { 
+//mongoose.connect("mongodb://localhost/nytreactsearch", {
+mongoose.connect("mongodb://herokuhost/heroku_wqk18zj3:uu2pd2lveluo4gb3dbhqvnsqe1@ds161041.mlab.com:61041/heroku_wqk18zj3", { 
   useMongoClient: true
 });
 
