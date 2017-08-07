@@ -13,7 +13,7 @@ var Article = require("../models/Article");
 
 // Database configuration with mongoose
 //mongoose.connect("mongodb://localhost/nytreactsearch", {
-mongoose.connect("mongodb://herokuhost/heroku_wqk18zj3:uu2pd2lveluo4gb3dbhqvnsqe1@ds161041.mlab.com:61041/heroku_wqk18zj3", { 
+mongoose.connect("mongodb://heroku_wqk18zj3:uu2pd2lveluo4gb3dbhqvnsqe1@ds161041.mlab.com:61041/heroku_wqk18zj3", { 
   useMongoClient: true
 });
 
@@ -33,7 +33,7 @@ module.exports = function(app) {
     });
 
     // This is the route we will send GET requests to retrieve our most recent search data.
-    app.get("/api/saved", function(req, res) {
+    app.get("/api", function(req, res) {
         // We will find all the records, sort it in descending order, then limit the records to 5
         Article.find({}).sort([
             ["date", "descending"]
@@ -48,7 +48,7 @@ module.exports = function(app) {
     });
 
     // This is the route we will send POST requests to save each search.
-    app.post("/api/saved", function(req, res){
+    app.post("/api", function(req, res){
         Article.create({
             title: req.body.title,
             date: req.body.date,
@@ -62,7 +62,7 @@ module.exports = function(app) {
         });
     });
 
-    app.post("/api/saved", function(req, res){
+    app.post("/api/delete", function(req, res){
         Article.remove({
             title: req.body.title,
             date: req.body.date,
@@ -72,7 +72,6 @@ module.exports = function(app) {
                 console.log(err);
             }
             else{
-                //console.log(removed);
                 res.send("Removed");
             }
         })
