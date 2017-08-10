@@ -25,7 +25,10 @@ export class Saved extends Component {
                     //console.log("Saved Articles Array ", this.state.saved);
                 }
             }.bind(this));
-        }.bind(this))
+        }.bind(this));
+
+         //Show modal 
+        $('#deleteArticleModal').modal();
     }
 
     render(){
@@ -48,20 +51,30 @@ export class Saved extends Component {
                                     <h3 className="panel-title">
                                         {search.title}
                                     </h3>
-                                </div>
-                                <div className="panel-body">
-                                    <h5 className="panel-date">
-                                        {search.date}
-                                    </h5>
                                     <a href={search.web_url}>
                                         {search.url}
                                     </a>
-                                    <button onClick={() => this.deleteArticle(search.title, search.date, search.url)} className="btn btn-primary" id="delete-article">Delete</button>
+                                    <div class="col-md-4 center-block"> 
+                                        <button onClick={() => this.deleteArticle(search.title, search.date, search.url)} className="btn btn-primary center-block" id="delete-article">Delete</button>
+                                    </div>
                                 </div>
                             </div> 
                         );
                     }.bind(this))};
                 </div>
+
+                    {/* Modal  */}
+                    <div id="deleteArticleModal" className="modal fade" role="dialog">
+                        <div className="modal-dialog">
+                            {/* Modal content */}
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <button type="button" className="close" id="article-saved-btn" data-dismiss="modal">&times;</button>
+                                    <h4 className="modal-title">Your article is deleted</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         )
     };

@@ -27,6 +27,9 @@ export class Results extends Component {
                 }
             }.bind(this));
         }.bind(this));
+
+        //Show modal 
+        $('#saveArticleModal').modal();
     }
 
     render(){
@@ -49,20 +52,30 @@ export class Results extends Component {
                                     <h3 className="panel-title">
                                         {search.headline.main}
                                     </h3>
-                                </div>
-                                <div className="panel-body">
-                                    <h5 className="panel-date">
-                                        {search.pub_date}
-                                    </h5>
                                     <a href={search.web_url}>
                                         {search.web_url}
                                     </a>
-                                    <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary" id="save-article">Save</button>
+                                    <div class="col-md-4 center-block"> 
+                                        <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary center-block" id="save-article">Save</button>
+                                    </div>
                                 </div>
                             </div> 
                         );
                     }.bind(this))};
                 </div>
+
+                {/* Modal  */}
+                    <div id="saveArticleModal" className="modal fade" role="dialog">
+                        <div className="modal-dialog">
+                            {/* Modal content */}
+                            <div className="modal-content">
+                                <div className="modal-header">
+                                    <button type="button" className="close" id="article-saved-btn" data-dismiss="modal">&times;</button>
+                                    <h4 className="modal-title">Your article is saved</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         )
     }
