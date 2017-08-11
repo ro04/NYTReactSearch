@@ -1,7 +1,8 @@
 // Include React
-import { Component } from 'react'
+import React from 'react'
 
 // Include Children
+import { Home } from "./children/Home";
 import { Search } from "./children/Search";
 import { Results } from "./children/Results";
 import { Saved } from "./children/Saved";
@@ -9,7 +10,7 @@ import { Saved } from "./children/Saved";
 // Requiring our helper for making API calls
 import helpers from "./utils/helpers";
 
-export class Main extends Component {
+export class Main extends React.Component {
     // ===== Here we set a generic state associated with the text being searched for =====
     constructor(props) {
         super(props)
@@ -70,32 +71,20 @@ export class Main extends Component {
     render() {
         return (
             <div className="container">
+                <Home />
                 {/*Row for Searching New York Times */}
-                <div className="row">
-                    <div className="col-sm-12">
-                        <div className="jumbotron">
-                            <h1 className="text-center"><strong>
-                                <i className="fa fa-newspaper-o"></i>New York Times Search</strong>
-                            </h1>
-                            <p className="text-center">
-                                <em>Enter a topic, start year, and end year to receive 10 articles relating to your topic.</em>
-                                <em>You can also save 5 articles to your search history for future reading.</em>
-                            </p>
-                        </div>
-                        <br />
-                        <div className="article-search">
-                            <Search setTerm={this.setTerm} />
-                        </div>
-                        <div className="article-results"> 
-                            <Results results={this.state.results}  
-                            setSavedArticles={this.setSavedArticles}/>  
-                        </div> 
-                        <div className="article-saved"> 
-                            <Saved saved={this.state.saved}
-                            setSavedArticles={this.setSavedArticles}/>   
-                        </div> 
-                    </div>
+                <br />
+                <div className="article-search">
+                    <Search setTerm={this.setTerm} />  
                 </div>
+                <div className="article-results"> 
+                    <Results results={this.state.results}    
+                    setSavedArticles={this.setSavedArticles}/>    
+                </div> 
+                <div className="article-saved"> 
+                    <Saved saved={this.state.saved}  
+                    setSavedArticles={this.setSavedArticles}/>     
+                </div> 
             </div>
         )
     }

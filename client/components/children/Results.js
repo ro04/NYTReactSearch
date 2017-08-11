@@ -1,9 +1,9 @@
-import { Component } from 'react';
+import React from 'react'
 
 // Requiring our helper for saving data
 import helpers from "../utils/helpers";
 
-export class Results extends Component {
+export class Results extends React.Component {
         constructor(props) {
         super(props)
         this.state = {
@@ -34,37 +34,38 @@ export class Results extends Component {
 
     render(){
         return (
-            <div className="col-sm-12">
-                <br /> 
-                <div className="panel panel-primary">
-                    <div className="panel-heading">
-                        <h3 className="panel-title text-center">
-                            <strong>
-                                <i className="fa fa-list-alt"></i>Results
-                            </strong>
-                        </h3>
-                    </div>
-                    <br />
-                    {this.props.results.map(function(search, i){
-                        return(
-                            <div key={i} className="panel panel-default">
-                                <div className="panel-heading">
-                                    <h3 className="panel-title">
-                                        {search.headline.main}
-                                    </h3>
-                                    <a href={search.web_url}>
-                                        {search.web_url}
-                                    </a>
-                                    <div class="col-md-4 center-block"> 
-                                        <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary center-block" id="save-article">Save</button>
+            <section id="results" className="results-section">
+                <div className="col-sm-12">
+                    <br /> 
+                    <div className="panel panel-primary">
+                        <div className="panel-heading">
+                            <h3 className="panel-title text-center">
+                                <strong>
+                                    <i className="fa fa-list-alt"></i>Results
+                                </strong>
+                            </h3>
+                        </div>
+                        <br />
+                        {this.props.results.map(function(search, i){
+                            return(
+                                <div key={i} className="panel panel-default">
+                                    <div className="panel-heading">
+                                        <h3 className="panel-title">
+                                            {search.headline.main}
+                                        </h3>
+                                        <a href={search.web_url}>
+                                            {search.web_url}
+                                        </a>
+                                        <div className="col-md-4 center-block"> 
+                                            <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary center-block" id="save-article">Save</button>
+                                        </div>
                                     </div>
-                                </div>
-                            </div> 
-                        );
-                    }.bind(this))};
-                </div>
+                                </div> 
+                            );
+                        }.bind(this))};
+                    </div>
 
-                {/* Modal  */}
+                    {/* Modal  */}
                     <div id="saveArticleModal" className="modal fade" role="dialog">
                         <div className="modal-dialog">
                             {/* Modal content */}
@@ -76,7 +77,8 @@ export class Results extends Component {
                             </div>
                         </div>
                     </div>
-            </div>
+                </div>
+            </section>
         )
     }
 };

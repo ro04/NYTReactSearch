@@ -1,7 +1,7 @@
 // Include React
-import { Component } from 'react'
+import React from 'react'
 
-export class Search extends Component {
+export class Search extends React.Component {
     constructor(props) {
         super(props);
 
@@ -47,58 +47,60 @@ export class Search extends Component {
     // ===============================================================================
     render() {
         return (
-            <div className="col-sm-12">
-                <br />
-                {/*First panel is for handling the search parameters */}
-                <div className="panel panel-primary">
-                    <div className="panel-heading">
-                        <h3 className="panel-title text-center">
-                            <strong>
-                                <i className="fa fa-list-alt"></i>Search Paramaters
-                            </strong>
-                        </h3>
-                    </div>
-                    <div className="panel-body">
-                        {/*Here we create an HTML Form for handling the inputs*/}
-                        <form role="form">
-                            {/*
-                                Here we create the text box for capturing the search term
-                                Also note how each has an onChange event associated with our handleChange event.
-                            */}
-                            <div className="form-group">
-                                <label htmlFor="search">Search Term:</label>
-                                <input value={this.state.search_term} type="text" className="form-control" id="search_term" onChange={this.handleChange} required/>
-                            </div>
-
-                            {/*
-                                Here we capture the Start Year Parameter
-                                Also note how each has an onChange event associated with our handleChange event.
-                            */}
-                            <div className="form-group">
-                                <label htmlFor="start-year">Start Year (Optional):</label>
-                                <input value={this.state.start_year} type="text" className="form-control" id="start_year" onChange={this.handleChange} required/>
-                            </div>
-
-                            {/*
-                                Here we capture the End Year Parameter 
-                                Also note how each has an onChange event associated with our handleChange event.
-                            */}
-                            <div className="form-group">
-                                <label htmlFor="end-year">End Year (Optional):</label>
-                                <input value={this.state.end_year} type="text" className="form-control" id="end_year" onChange={this.handleChange} required/>
-                            </div>
+            <section id="search" className="search-section">
+                <div className="col-sm-12">
+                    <br />
+                    {/*First panel is for handling the search parameters */}
+                    <div className="panel panel-primary">
+                        <div className="panel-heading">
+                            <h3 className="panel-title text-center">
+                                <strong>
+                                    <i className="fa fa-list-alt"></i>Search Paramaters
+                                </strong>
+                            </h3>
+                        </div>
+                        <div className="panel-body">
+                            {/*Here we create an HTML Form for handling the inputs*/}
+                            <form role="form">
+                                {/*
+                                    Here we create the text box for capturing the search term
+                                    Also note how each has an onChange event associated with our handleChange event.
+                                */}
+                                <div className="form-group">
+                                    <label htmlFor="search">Search Term:</label>
+                                    <input value={this.state.search_term} type="text" className="form-control" id="search_term" onChange={this.handleChange} required/>
+                                </div>
 
                                 {/*
-                                Here we have our final submit button 
-                                Note how we have an onClick event associated with our handleClick function.
-                                this.handleClick references the handleClick function defined above our render function
+                                    Here we capture the Start Year Parameter
+                                    Also note how each has an onChange event associated with our handleChange event.
                                 */}
-                            <button className="btn btn-default" id="run-search" type="submit" onClick={this.searchClick}><i className="fa fa-search"></i> Search</button>
-                            <button className="btn btn-default" id="clear-all" type="submit" onClick={this.clearClick}><i className="fa fa-trash"></i> Clear</button>
-                        </form>
+                                <div className="form-group">
+                                    <label htmlFor="start-year">Start Year (Optional):</label>
+                                    <input value={this.state.start_year} type="text" className="form-control" id="start_year" onChange={this.handleChange} required/>
+                                </div>
+
+                                {/*
+                                    Here we capture the End Year Parameter 
+                                    Also note how each has an onChange event associated with our handleChange event.
+                                */}
+                                <div className="form-group">
+                                    <label htmlFor="end-year">End Year (Optional):</label>
+                                    <input value={this.state.end_year} type="text" className="form-control" id="end_year" onChange={this.handleChange} required/>
+                                </div>
+
+                                    {/*
+                                    Here we have our final submit button 
+                                    Note how we have an onClick event associated with our handleClick function.
+                                    this.handleClick references the handleClick function defined above our render function
+                                    */}
+                                <button className="btn btn-default" id="run-search" type="submit" onClick={this.searchClick}><i className="fa fa-search"></i> Search</button>
+                                <button className="btn btn-default" id="clear-all" type="submit" onClick={this.clearClick}><i className="fa fa-trash"></i> Clear</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </section>
         );
     };
 };
