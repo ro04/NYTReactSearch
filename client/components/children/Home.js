@@ -31,7 +31,7 @@ export class Home extends React.Component {
                             <button type="button" className="navbar-toggle" onClick={this.toggleCollapse}>
                                 <span className="sr-only">Toggle navigation</span> Menu <i className="fa fa-bars"></i>
                             </button>
-                            <a className="navbar-brand page-scroll" href="#page-top">Web Scraper</a> 
+                            <a className="navbar-brand page-scroll" href="#page-top">Home</a> 
                         </div>
 
                         {/* Collect the nav links, forms, and other content for toggling  */}

@@ -1,5 +1,22 @@
 
 body {
-    background: url("../images/newsprint.jpg");
+    background: url("../images/newsprint_red.jpg");
+}
+
+#mainNav {
+    background-color: #e6e6ff;
+}
+
+.jumbotron {
+    background-color: #e6e6ff;
+}
+
+#page-top {
+    font-family: 'Oswald', sans-serif;
+}
+
+#delete-article, 
+#save-article {
+    width: 25%;
 }
 

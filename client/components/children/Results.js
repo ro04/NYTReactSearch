@@ -56,8 +56,10 @@ export class Results extends React.Component {
                                         <a href={search.web_url}>
                                             {search.web_url}
                                         </a>
-                                        <div className="col-md-4 center-block"> 
-                                            <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary center-block" id="save-article">Save</button>
+                                    </div>
+                                    <div className="panel-body">
+                                         <div className="col-sm-offset-4 col-md-4"> 
+                                            <button onClick={() => this.saveArticle(search.headline.main, search.pub_date, search.web_url)} className="btn btn-primary" id="save-article">Save</button>
                                         </div>
                                     </div>
                                 </div> 

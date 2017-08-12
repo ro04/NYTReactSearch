@@ -55,8 +55,10 @@ export class Saved extends React.Component {
                                         <a href={search.web_url}>
                                             {search.url}
                                         </a>
-                                        <div className="col-md-4 center-block"> 
-                                            <button onClick={() => this.deleteArticle(search.title, search.date, search.url)} className="btn btn-primary center-block" id="delete-article">Delete</button>
+                                    </div>
+                                    <div className="panel-body">
+                                        <div className="col-sm-offset-4 col-md-4"> 
+                                            <button onClick={() => this.deleteArticle(search.title, search.date, search.url)} className="btn btn-primary" id="delete-article">Delete</button>
                                         </div>
                                     </div>
                                 </div> 
